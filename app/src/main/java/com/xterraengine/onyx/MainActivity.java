@@ -14,7 +14,6 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.xterraengine.onyxs3.Onyxamazon;
-import com.xterraengine.onyxs3.S3Cert;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -58,12 +57,12 @@ public class MainActivity extends AppCompatActivity {
             Uri pickedImage = data.getData();
 
 
-            Toast.makeText(this, "Imagen cargada", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Subiendo imagen", Toast.LENGTH_SHORT).show();
             Log.i(TAG, "Uri Image ->" + pickedImage);
 
 
-            new Onyxamazon(this, new S3Cert().onyxCert(this, SECRET, KEY_VAL), pickedImage)
-                    .uploadImage("LIB", "MASTER", "PR", "99999", "99999");
+            new Onyxamazon(this, SECRET, KEY_VAL, pickedImage)
+                    .uploadImage("SNAP", "MASTER", "PR", "99999", "99999");
         }
     }
 }

@@ -17,7 +17,7 @@ allprojects {
 
 ```
 dependencies {
-	        implementation 'com.github.XterraEngine-dev:onyxs3:-SNAPSHOT'
+    implementation 'com.github.XterraEngine-dev:onyxs3:0.0.1'
 	}
 ```
 

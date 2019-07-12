@@ -8,6 +8,7 @@ import android.os.Environment;
 import android.util.Log;
 import android.webkit.MimeTypeMap;
 
+import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.mobile.client.AWSMobileClient;
 import com.amazonaws.mobileconnectors.s3.transferutility.TransferListener;
 import com.amazonaws.mobileconnectors.s3.transferutility.TransferObserver;
@@ -26,15 +27,20 @@ public class Onyxamazon {
 
     private Context context;
     private Uri fileUri;
-    private AmazonS3Client s3Client;
+    private String secret;
+    private String key;
 
-    public Onyxamazon(Context context, AmazonS3Client s3Client, Uri uri) {
+    public Onyxamazon(Context context, String secret, String key, Uri uri) {
         this.context = context;
         this.fileUri = uri;
-        this.s3Client = s3Client;
+        this.secret = secret;
+        this.key = key;
     }
 
     public void uploadImage(String NOMBREAPP, String USUARIO, String OPERACION, String UID, String timestamp) {
+        AWSMobileClient.getInstance().initialize(context).execute();
+        BasicAWSCredentials credentials = new BasicAWSCredentials(key, secret);
+        AmazonS3Client s3Client = new AmazonS3Client(credentials);
 
 
         if (fileUri != null) {
