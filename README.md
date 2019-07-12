@@ -1,3 +1,5 @@
+[![](https://jitpack.io/v/XterraEngine-dev/onyxs3.svg)](https://jitpack.io/#XterraEngine-dev/onyxs3)
+
 # ONYX S3
 ## UPLOAD TO AMAZON S3 BUCKET
 
@@ -13,12 +15,27 @@ allprojects {
 		}
 	}
 ```
+
+##### MANIFEST
+```
+        <service
+            android:name="com.amazonaws.mobileconnectors.s3.transferutility.TransferService"
+            android:enabled="true" />
+```
+
 #### module app
 
 ```
 dependencies {
-    implementation 'com.github.XterraEngine-dev:onyxs3:0.0.1'
+    implementation 'com.github.XterraEngine-dev:onyxs3:0.0.2'
 	}
+	 implementation('com.amazonaws:aws-android-sdk-mobile-client:2.6.7@aar') {
+            transitive = true
+        }
+        //noinspection GradleDynamicVersion
+        implementation 'com.amazonaws:aws-android-sdk-s3:2.6.+'
+        //noinspection GradleDynamicVersion
+        implementation 'com.amazonaws:aws-android-sdk-cognito:2.6.+'
 ```
 
 ### Uso 
